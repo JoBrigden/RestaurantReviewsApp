@@ -1,7 +1,11 @@
-// Create cache
+/**
+ * Create cache
+ */
 let staticCacheId = 'rest-restaurant-v1';
 
-// Files to cache
+/**
+ *Files to cache
+ */
 self.addEventListener('install', function(event) {
   event.waitUntil (
     caches.open(staticCacheId).then(function(cache) {
@@ -30,7 +34,9 @@ self.addEventListener('install', function(event) {
   );
 });
 
-// Perform sw install
+/**
+ * Perform sw install
+ */
 self.addEventListener('install', function(event) {
   event.waitUntil (
     caches.keys()
