@@ -37,7 +37,7 @@ self.addEventListener('install', function(event) {
 /**
  * Perform sw install
  */
-self.addEventListener('install', function(event) {
+self.addEventListener('install', event => {
   event.waitUntil (
     caches.keys()
     .then(function(cache) {
@@ -52,11 +52,11 @@ self.addEventListener('install', function(event) {
   );
 })
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', event => {
   event.respondWith (
-    caches.match(request, {ignoreSearch})
-    .then(function(response) {
+    caches.match(event.request, { ignoreSearch: true })
+    .then(response => {
       return response || fetch(event.request);
-    });
+    })
   );
 });
